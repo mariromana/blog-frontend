@@ -1,0 +1,10 @@
+export { Home } from './Home';
+export { FullPost } from './FullPost';
+export { AddPost } from './AddPost';
+export { Registration } from './Registration';
+export { Login } from './Login';
+export { AddUserInfo } from './AddUserInfo';
+export { ForgotPassword } from './ForgotPassword';
+export { ResetPassword } from './ResetPassword';
+export { InvalidEmail } from './InvalidEmail';
+export { Page404 } from './Page404';

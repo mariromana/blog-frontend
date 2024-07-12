@@ -1,0 +1,46 @@
+.root {
+    width: 400px;
+    padding: 50px;
+    border: 1px solid #dedede;
+    margin: 50px auto;
+}
+
+.field {
+    margin-bottom: 20px !important;
+}
+.secondField {
+    margin-bottom: 10px !important;
+}
+
+.title {
+    text-align: center !important;
+    font-weight: bold !important;
+    margin-bottom: 20px !important;
+}
+.subtitle {
+    text-align: center !important;
+    margin-bottom: 15px !important;
+    font-size: 18px;
+}
+.button {
+    margin-bottom: 8px;
+}
+.buttonSmall {
+    margin-top: 5px;
+}
+.link {
+    display: block;
+    margin-top: 5px;
+    color: grey;
+    text-decoration: none;
+    span {
+        // text-decoration: underline;
+        color: #4361ee;
+    }
+    &:hover {
+        color: #4361ee;
+    }
+    &:nth-child(1) {
+        margin-top: 5px;
+    }
+}
