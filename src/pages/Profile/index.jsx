@@ -120,7 +120,7 @@ export const Profile = () => {
                                     // }
                                     src={
                                         data.avatarUrl
-                                            ? `https://blog-mern-api-sand.vercel.app/${data.avatarUrl}`
+                                            ? `https://blog-api-swart-six.vercel.app/${data.avatarUrl}`
                                             : defaultAvatar
                                     }
                                     alt={data.fullName}
@@ -232,7 +232,7 @@ export const Profile = () => {
                                 // }
                                 imageUrl={
                                     obj.imageUrl
-                                        ? `https://blog-mern-api-sand.vercel.app/${obj.imageUrl}`
+                                        ? `https://blog-api-swart-six.vercel.app/${obj.imageUrl}`
                                         : ''
                                 }
                                 user={obj.user}

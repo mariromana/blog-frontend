@@ -122,7 +122,7 @@ export const CommentsBlock = ({
                                                     // }
                                                     src={
                                                         obj.user.avatarUrl
-                                                            ? `https://blog-mern-api-sand.vercel.app/${obj.user.avatarUrl}`
+                                                            ? `https://blog-api-swart-six.vercel.app/${obj.user.avatarUrl}`
                                                             : defaultImg
                                                     }
                                                 />

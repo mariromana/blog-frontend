@@ -84,7 +84,7 @@ export const Home = () => {
                                 // }
                                 imageUrl={
                                     obj.imageUrl
-                                        ? `https://blog-mern-api-sand.vercel.app/${obj.imageUrl}`
+                                        ? `https://blog-api-swart-six.vercel.app/${obj.imageUrl}`
                                         : ''
                                 }
                                 user={obj.user}

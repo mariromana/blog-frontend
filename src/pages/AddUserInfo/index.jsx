@@ -138,7 +138,7 @@ export const AddUserInfo = () => {
                                 /> */}
                                 <img
                                     className={styles.avatarUser}
-                                    src={`https://blog-mern-api-sand.vercel.app/${avatarUrl}`}
+                                    src={`https://blog-api-swart-six.vercel.app/${avatarUrl}`}
                                     alt="Uploaded"
                                 />
 

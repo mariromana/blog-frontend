@@ -180,7 +180,7 @@ export const AddPost = () => {
                         /> */}
                         <img
                             className={styles.image}
-                            src={`https://blog-mern-api-sand.vercel.app/${imageUrl}`}
+                            src={`https://blog-api-swart-six.vercel.app/${imageUrl}`}
                             alt="Uploaded"
                         />
                     </>

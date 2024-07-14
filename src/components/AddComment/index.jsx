@@ -37,7 +37,7 @@ export const Index = () => {
                     // }
                     src={
                         data.avatarUrl
-                            ? `https://blog-mern-api-sand.vercel.app/${data.avatarUrl}`
+                            ? `https://blog-api-swart-six.vercel.app/${data.avatarUrl}`
                             : defaultAvatar
                     }
                     alt="avatar"

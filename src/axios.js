@@ -5,7 +5,7 @@ import axios from 'axios';
 // });
 
 const instance = axios.create({
-    baseURL: 'https://blog-mern-api-sand.vercel.app',
+    baseURL: 'https://blog-api-swart-six.vercel.app',
 });
 
 instance.interceptors.request.use((config) => {

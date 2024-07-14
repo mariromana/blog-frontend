@@ -77,7 +77,7 @@ export const FullPost = () => {
                 // }
                 imageUrl={
                     data.imageUrl
-                        ? `https://blog-mern-api-sand.vercel.app/${data.imageUrl}`
+                        ? `https://blog-api-swart-six.vercel.app/${data.imageUrl}`
                         : ''
                 }
                 user={data.user}

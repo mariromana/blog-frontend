@@ -14,7 +14,7 @@ export const UserInfo = ({ avatarUrl, fullName, additionalText }) => {
                 // }
                 src={
                     avatarUrl
-                        ? `https://blog-mern-api-sand.vercel.app/${avatarUrl}`
+                        ? `https://blog-api-swart-six.vercel.app/${avatarUrl}`
                         : defaultAvatar
                 }
                 alt={fullName}
