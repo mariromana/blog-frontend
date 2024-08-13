@@ -70,7 +70,6 @@ const authSlice = createSlice({
                 state.status = 'error';
             })
             .addCase(fetchAuthMe.pending, (state) => {
-                state.data = null;
                 state.status = 'loading';
             })
             .addCase(fetchAuthMe.fulfilled, (state, action) => {
@@ -99,7 +98,8 @@ const authSlice = createSlice({
             })
             .addCase(fetchUpdateAuth.fulfilled, (state, action) => {
                 state.status = 'succeeded';
-                state.user = action.payload;
+
+                state.data = action.payload;
             })
             .addCase(fetchUpdateAuth.rejected, (state, action) => {
                 state.status = 'failed';

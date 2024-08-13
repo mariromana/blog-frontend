@@ -67,6 +67,7 @@ export const Profile = () => {
 
     useEffect(() => {
         dispatch(fetchAuthMe());
+        console.log(data);
     }, [dispatch]);
 
     const onEdit = () => {
@@ -108,19 +109,14 @@ export const Profile = () => {
             <Grid container spacing={4}>
                 <Grid xs={4} item>
                     <div className={styles.root}>
-                        {!edit && data && (
+                        {data && (
                             <Card>
                                 <Avatar
                                     sx={{ width: 100, height: 100 }}
                                     className={styles.avatar}
-                                    // src={
-                                    //     data.avatarUrl
-                                    //         ? `http://localhost:5000/${data.avatarUrl}`
-                                    //         : defaultAvatar
-                                    // }
                                     src={
                                         data.avatarUrl
-                                            ? `https://blog-api-swart-six.vercel.app/${data.avatarUrl}`
+                                            ? data.avatarUrl
                                             : defaultAvatar
                                     }
                                     alt={data.fullName}
@@ -225,16 +221,7 @@ export const Profile = () => {
                                 key={obj._id}
                                 id={obj._id}
                                 title={obj.title}
-                                // imageUrl={
-                                //     obj.imageUrl
-                                //         ? `http://localhost:5000/${obj.imageUrl}`
-                                //         : ''
-                                // }
-                                imageUrl={
-                                    obj.imageUrl
-                                        ? `https://blog-api-swart-six.vercel.app/${obj.imageUrl}`
-                                        : ''
-                                }
+                                imageUrl={obj.imageUrl ? obj.imageUrl : ''}
                                 user={obj.user}
                                 createdAt={obj.createdAt}
                                 viewsCount={obj.viewsCount}

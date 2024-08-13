@@ -52,7 +52,8 @@ export const Registration = ({ isEditing }) => {
     const isAuth = useSelector(selectIsAuth);
     const [errorMessage, setErrorMessage] = useState();
     const [pass, setPass] = useState(true);
-    const [avatarUrl, setAvatar] = useState('');
+    const [avatarFile, setAvatarFile] = useState(null);
+    const [previewUrl, setPreviewUrl] = useState('');
     const inputFileRef = useRef(null);
 
     const {
@@ -70,12 +71,22 @@ export const Registration = ({ isEditing }) => {
     });
 
     const onSubmit = async (values) => {
-        const dataToSend = {
-            ...values,
-            avatarUrl: avatarUrl,
-        };
-
         try {
+            let avatarUrl = '';
+
+            if (avatarFile) {
+                const formData = new FormData();
+                formData.append('image', avatarFile);
+
+                const { data } = await axios.post('/upload', formData);
+                avatarUrl = data.url;
+            }
+
+            const dataToSend = {
+                ...values,
+                avatarUrl,
+            };
+
             const data = await dispatch(fetchRegister(dataToSend));
 
             if (!data.payload) {
@@ -111,25 +122,19 @@ export const Registration = ({ isEditing }) => {
     const visibilityPassword = () => {
         setPass(!pass);
     };
-    const handleChangeFile = async (event) => {
-        try {
-            const formData = new FormData();
-            const file = event.target.files[0];
-            console.log(file);
-            formData.append('image', file);
-            const { data } = await axios.post('/upload', formData);
-            setAvatar(data.url);
-            console.log(data.url);
-        } catch (err) {
-            console.warn(err);
-            alert('Ошибка загрузки avatara');
+
+    const handleChangeFile = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            setAvatarFile(file);
+            setPreviewUrl(URL.createObjectURL(file));
         }
     };
 
     const onClickRemoveImage = () => {
-        setAvatar('');
+        setAvatarFile(null);
+        setPreviewUrl('');
     };
-
     if (isAuth) {
         return <Navigate to="/" />;
     }
@@ -148,7 +153,7 @@ export const Registration = ({ isEditing }) => {
                     {errorMessage}
                 </Typography>
                 <div className={styles.avatar}>
-                    {!avatarUrl && (
+                    {!previewUrl && (
                         <Avatar
                             sx={{ width: 100, height: 100 }}
                             onClick={() => inputFileRef.current.click()}
@@ -157,16 +162,11 @@ export const Registration = ({ isEditing }) => {
                 </div>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className={styles.avatar}>
-                        {avatarUrl && (
+                        {previewUrl && (
                             <div className={styles.avatarUsers}>
-                                {/* <img
-                                    className={styles.avatarUser}
-                                    src={`http://localhost:5000/${avatarUrl}`}
-                                    alt="Uploaded"
-                                /> */}
                                 <img
                                     className={styles.avatarUser}
-                                    src={`https://blog-api-swart-six.vercel.app/${avatarUrl}`}
+                                    src={previewUrl}
                                     alt="Uploaded"
                                 />
 
@@ -181,7 +181,7 @@ export const Registration = ({ isEditing }) => {
                             </div>
                         )}
                     </div>
-                    {!avatarUrl && (
+                    {!previewUrl && (
                         <Button
                             style={{
                                 display: 'block',

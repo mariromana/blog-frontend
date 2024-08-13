@@ -115,14 +115,9 @@ export const CommentsBlock = ({
                                             ) : (
                                                 <Avatar
                                                     alt={obj.user.fullName}
-                                                    // src={
-                                                    //     obj.user.avatarUrl
-                                                    //         ? `http://localhost:5000/${obj.user.avatarUrl}`
-                                                    //         : defaultImg
-                                                    // }
                                                     src={
                                                         obj.user.avatarUrl
-                                                            ? `https://blog-api-swart-six.vercel.app/${obj.user.avatarUrl}`
+                                                            ? obj.user.avatarUrl
                                                             : defaultImg
                                                     }
                                                 />

@@ -1,0 +1,9 @@
+.hideScreen {
+    display: none;
+}
+
+@media (min-width: 730px) {
+    .hideScreen {
+        display: block;
+    }
+}

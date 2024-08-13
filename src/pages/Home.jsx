@@ -7,6 +7,7 @@ import Grid from '@mui/material/Grid';
 import { Post } from '../components/Post';
 import { TagsBlock } from '../components/TagsBlock';
 import { Helmet } from 'react-helmet';
+import styles from './Home.module.scss';
 import {
     fetchNewPosts,
     fetchPosts,
@@ -65,7 +66,7 @@ export const Home = () => {
             </Tabs>
 
             <Grid container spacing={4}>
-                <Grid xs={8} item>
+                <Grid item xs={12} md={8}>
                     {(isPostsLoading || !Array.isArray(posts.items)
                         ? [...Array(5)]
                         : posts.items
@@ -77,16 +78,7 @@ export const Home = () => {
                                 key={obj._id}
                                 id={obj._id}
                                 title={obj.title}
-                                // imageUrl={
-                                //     obj.imageUrl
-                                //         ? `http://localhost:5000/${obj.imageUrl}`
-                                //         : ''
-                                // }
-                                imageUrl={
-                                    obj.imageUrl
-                                        ? `https://blog-api-swart-six.vercel.app/${obj.imageUrl}`
-                                        : ''
-                                }
+                                imageUrl={obj.imageUrl ? obj.imageUrl : ''}
                                 user={obj.user}
                                 createdAt={obj.createdAt}
                                 viewsCount={obj.viewsCount}
@@ -97,7 +89,7 @@ export const Home = () => {
                         )
                     )}
                 </Grid>
-                <Grid xs={4} item>
+                <Grid item xs={12} md={4} className={styles.hideScreen}>
                     <TagsBlock items={tags.items} isLoading={false} />
                 </Grid>
             </Grid>

@@ -36,7 +36,9 @@ export const AddPost = () => {
     const [text, setText] = useState('');
     const [title, setTitle] = useState('');
     const [tags, setTags] = useState('');
-    const [imageUrl, setImageUrl] = useState('');
+    const [imageFile, setImageFile] = useState(null);
+    const [previewUrl, setPreviewUrl] = useState('');
+    const [existingImageUrl, setExistingImageUrl] = useState('');
     const inputFileRef = useRef(null);
     const isEditing = Boolean(id);
     const [warning, setWarning] = useState('');
@@ -59,22 +61,17 @@ export const AddPost = () => {
         }
     }, []);
 
-    const handleChangeFile = async (event) => {
-        try {
-            const formData = new FormData();
-            const file = event.target.files[0];
-            formData.append('image', file);
-            const { data } = await axios.post('/upload', formData);
-            setImageUrl(data.url);
-            console.log(data.url);
-        } catch (err) {
-            console.warn(err);
-            alert('Ошибка загрузки картинки');
+    const handleChangeFile = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            setImageFile(file);
+            setPreviewUrl(URL.createObjectURL(file));
         }
     };
 
     const onClickRemoveImage = () => {
-        setImageUrl('');
+        setImageFile(null);
+        setPreviewUrl('');
     };
 
     useEffect(() => {
@@ -85,7 +82,8 @@ export const AddPost = () => {
                     setTitle(data.title);
                     setTags(data.tags.join(','));
                     setText(data.text);
-                    setImageUrl(data.imageUrl);
+                    setPreviewUrl(data.imageUrl);
+                    setExistingImageUrl(data.imageUrl);
                     setValue('title', data.title);
                     setValue('text', data.text);
                 })
@@ -120,10 +118,19 @@ export const AddPost = () => {
     if (!window.localStorage.getItem('token') && !isAuth) {
         return <Navigate to="/" />;
     }
-
     const onSubmit = async () => {
         try {
             setIsLoading(true);
+            let imageUrl = existingImageUrl;
+
+            if (imageFile) {
+                const formData = new FormData();
+                formData.append('image', imageFile);
+
+                const { data } = await axios.post('/upload', formData);
+
+                imageUrl = data.url;
+            }
 
             const fields = {
                 title,
@@ -164,7 +171,7 @@ export const AddPost = () => {
                     onChange={handleChangeFile}
                     hidden
                 />
-                {imageUrl && (
+                {previewUrl && (
                     <>
                         <Button
                             variant="contained"
@@ -173,15 +180,10 @@ export const AddPost = () => {
                         >
                             Delete
                         </Button>
-                        {/* <img
-                            className={styles.image}
-                            src={`http://localhost:5000/${imageUrl}`}
-                            alt="Uploaded"
-                        /> */}
                         <img
                             className={styles.image}
-                            src={`https://blog-api-swart-six.vercel.app/${imageUrl}`}
-                            alt="Uploaded"
+                            src={previewUrl}
+                            alt="Uploaded Preview"
                         />
                     </>
                 )}
@@ -211,7 +213,6 @@ export const AddPost = () => {
                 <SimpleMDE
                     className={styles.editor}
                     value={text}
-                    // onChange={onChange}
                     onChange={(value) => {
                         onChange(value);
                     }}

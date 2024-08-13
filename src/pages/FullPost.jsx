@@ -70,16 +70,7 @@ export const FullPost = () => {
             <Post
                 id={data._id}
                 title={data.title}
-                // imageUrl={
-                //     data.imageUrl
-                //         ? `http://localhost:5000/${data.imageUrl}`
-                //         : ''
-                // }
-                imageUrl={
-                    data.imageUrl
-                        ? `https://blog-api-swart-six.vercel.app/${data.imageUrl}`
-                        : ''
-                }
+                imageUrl={data.imageUrl ? data.imageUrl : ''}
                 user={data.user}
                 createdAt={data.createdAt}
                 viewsCount={data.viewsCount}

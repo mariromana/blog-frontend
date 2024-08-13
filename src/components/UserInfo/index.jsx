@@ -7,16 +7,7 @@ export const UserInfo = ({ avatarUrl, fullName, additionalText }) => {
         <div className={styles.root}>
             <img
                 className={styles.avatar}
-                // src={
-                //     avatarUrl
-                //         ? `http://localhost:5000/${avatarUrl}`
-                //         : defaultAvatar
-                // }
-                src={
-                    avatarUrl
-                        ? `https://blog-api-swart-six.vercel.app/${avatarUrl}`
-                        : defaultAvatar
-                }
+                src={avatarUrl ? avatarUrl : defaultAvatar}
                 alt={fullName}
             />
             <div className={styles.userDetails}>

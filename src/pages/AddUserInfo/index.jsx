@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRef, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchUpdateAuth } from '../../redux/slices/auth';
+import { fetchUpdateAuth, fetchAuthMe } from '../../redux/slices/auth';
 import axios from '../../axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
@@ -90,8 +90,10 @@ export const AddUserInfo = () => {
         if ('token' in data.payload) {
             window.localStorage.setItem('token', data.payload.token);
         }
+
         navigate('/profile');
     };
+
     const handleChangeFile = async (event) => {
         setIsEdited(true);
         try {
@@ -131,14 +133,9 @@ export const AddUserInfo = () => {
                     <div className={styles.avatar}>
                         {avatarUrl && (
                             <div className={styles.avatarUsers}>
-                                {/* <img
-                                    className={styles.avatarUser}
-                                    src={`http://localhost:5000/${avatarUrl}`}
-                                    alt="Uploaded"
-                                /> */}
                                 <img
                                     className={styles.avatarUser}
-                                    src={`https://blog-api-swart-six.vercel.app/${avatarUrl}`}
+                                    src={avatarUrl}
                                     alt="Uploaded"
                                 />
 

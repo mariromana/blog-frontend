@@ -30,16 +30,7 @@ export const Index = () => {
             <div className={styles.root}>
                 <Avatar
                     classes={{ root: styles.avatar }}
-                    // src={
-                    //     data.avatarUrl
-                    //         ? `https://localhost:5000/${data.avatarUrl}`
-                    //         : defaultAvatar
-                    // }
-                    src={
-                        data.avatarUrl
-                            ? `https://blog-api-swart-six.vercel.app/${data.avatarUrl}`
-                            : defaultAvatar
-                    }
+                    src={data.avatarUrl ? data.avatarUrl : defaultAvatar}
                     alt="avatar"
                 />
 

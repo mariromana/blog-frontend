@@ -112,19 +112,7 @@ const commentsSlice = createSlice({
             .addCase(fetchDeleteComment.rejected, (state) => {
                 state.comments.status = 'error';
             })
-            // .addCase(fetchDeleteComment.pending, (state, action) => {
-            //     state.comments.items = state.comments.items.filter((obj) => {
-            //         return obj._id !== action.meta.arg;
-            //     });
-            //     state.comments.status = 'loading';
-            // })
-            // .addCase(fetchDeleteComment.fulfilled, (state) => {
-            //     // state.comments.items = action.payload;
-            //     state.comments.status = 'loaded';
-            // })
-            // .addCase(fetchDeleteComment.rejected, (state) => {
-            //     state.comments.status = 'error';
-            // })
+
             .addDefaultCase(() => {});
     },
 });
