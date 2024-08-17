@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import clsx from 'clsx';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
@@ -46,6 +46,7 @@ export const Post = ({
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [modalOpen, setModalOpen] = useState(false);
+    const imageRef = useRef(null);
 
     const handleClickOpenModal = () => {
         setModalOpen(true);
@@ -97,6 +98,15 @@ export const Post = ({
     const postByTags = (name) => {
         dispatch(fetchPostsByTags(name));
         console.log(name);
+    };
+
+    const handleImageClick = () => {
+        if (imageRef.current) {
+            handlePostClick();
+        }
+    };
+    const handlePostClick = () => {
+        navigate(`/posts/${id}`);
     };
 
     return (
@@ -166,6 +176,8 @@ export const Post = ({
                     })}
                     src={imageUrl}
                     alt={title}
+                    ref={imageRef}
+                    onClick={handleImageClick}
                 />
             )}
             <div className={styles.wrapper}>
