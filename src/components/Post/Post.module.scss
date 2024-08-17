@@ -1,5 +1,4 @@
 $blue: #4361ee;
-
 .root {
     background-color: #fff;
     border: 1px solid #dedede;
@@ -8,23 +7,52 @@ $blue: #4361ee;
     margin-bottom: 15px;
     position: relative;
 
-    &:hover {
-        border: 1px solid $blue;
-        box-shadow: 0 0 0 1px $blue;
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            border: 1px solid $blue;
+            box-shadow: 0 0 0 1px $blue;
 
-        .editButtons {
-            opacity: 1;
+            .editButtons {
+                opacity: 1;
+            }
         }
     }
 
     &Full {
-        &:hover {
-            background-color: #fff;
-            border: 1px solid #dedede;
-            box-shadow: none;
+        @media (hover: hover) and (pointer: fine) {
+            &:hover {
+                background-color: #fff;
+                border: 1px solid #dedede;
+                box-shadow: none;
+            }
         }
     }
 }
+// .root {
+//     background-color: #fff;
+//     border: 1px solid #dedede;
+//     border-radius: 6px;
+//     overflow: hidden;
+//     margin-bottom: 15px;
+//     position: relative;
+
+//     &:hover {
+//         border: 1px solid $blue;
+//         box-shadow: 0 0 0 1px $blue;
+
+//         .editButtons {
+//             opacity: 1;
+//         }
+//     }
+
+//     &Full {
+//         &:hover {
+//             background-color: #fff;
+//             border: 1px solid #dedede;
+//             box-shadow: none;
+//         }
+//     }
+// }
 
 .image {
     width: 100%;

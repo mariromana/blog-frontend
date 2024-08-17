@@ -67,7 +67,6 @@ export const Profile = () => {
 
     useEffect(() => {
         dispatch(fetchAuthMe());
-        console.log(data);
     }, [dispatch]);
 
     const onEdit = () => {
@@ -107,7 +106,7 @@ export const Profile = () => {
                 <title>Profile</title>
             </Helmet>
             <Grid container spacing={4}>
-                <Grid xs={4} item>
+                <Grid item xs={12} md={4}>
                     <div className={styles.root}>
                         {data && (
                             <Card>
@@ -123,6 +122,7 @@ export const Profile = () => {
                                 />
                                 <div className={styles.userDetails}>
                                     <Typography
+                                        className={styles.name}
                                         gutterBottom
                                         variant="h5"
                                         component="div"
@@ -130,6 +130,7 @@ export const Profile = () => {
                                         Name: {data.fullName}
                                     </Typography>
                                     <Typography
+                                        className={styles.email}
                                         gutterBottom
                                         variant="h5"
                                         component="div"
@@ -209,7 +210,7 @@ export const Profile = () => {
                     </div>
                 </Grid>
 
-                <Grid xs={8} item>
+                <Grid item xs={12} md={8}>
                     {(isPostsLoading || !Array.isArray(posts.items)
                         ? [...Array(5)]
                         : posts.items

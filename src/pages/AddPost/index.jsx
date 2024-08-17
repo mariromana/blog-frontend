@@ -118,6 +118,7 @@ export const AddPost = () => {
     if (!window.localStorage.getItem('token') && !isAuth) {
         return <Navigate to="/" />;
     }
+
     const onSubmit = async () => {
         try {
             setIsLoading(true);
@@ -216,7 +217,7 @@ export const AddPost = () => {
                     onChange={(value) => {
                         onChange(value);
                     }}
-                    helperText={errors.title?.message}
+                    // helperText={errors.title?.message}
                     options={options}
                 />
                 {warning && <p className={styles.warning}>{warning}</p>}
