@@ -199,7 +199,7 @@ export const Post = ({
                             tags
                                 .filter((tag) => tag.trim() !== '')
                                 .map((name) => (
-                                    <li key={name}>
+                                    <li key={name} data-testid={`tag-${name}`}>
                                         <Link
                                             onClick={() => postByTags(name)}
                                             to={`/tag/${name}`}
@@ -216,11 +216,11 @@ export const Post = ({
                         <div className={styles.content}>{children}</div>
                     )}
                     <ul className={styles.postDetails}>
-                        <li>
+                        <li data-testid="views-count">
                             <EyeIcon />
                             <span>{viewsCount}</span>
                         </li>
-                        <li>
+                        <li data-testid="comments-count">
                             <CommentIcon />
                             <span>{commentsCount}</span>
                         </li>

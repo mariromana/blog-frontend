@@ -8,6 +8,7 @@ import { Post } from '../components/Post';
 import { TagsBlock } from '../components/TagsBlock';
 import { Helmet } from 'react-helmet';
 import styles from './Home.module.scss';
+
 import {
     fetchNewPosts,
     fetchPosts,
@@ -19,8 +20,10 @@ import { fetchLastComments } from '../redux/slices/comment';
 export const Home = () => {
     const dispatch = useDispatch();
     const { posts, tags } = useSelector((state) => state.posts);
+    const postsStatus = useSelector((state) => state.posts.status);
     const userData = useSelector((state) => state.auth.data);
-    const isPostsLoading = posts.status === 'loading';
+    // const isPostsLoading = posts.status === 'loading';
+    const isPostsLoading = postsStatus === 'loading';
 
     const [tabs, setTabs] = useState('1');
 

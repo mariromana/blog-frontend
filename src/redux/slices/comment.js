@@ -87,7 +87,7 @@ const commentsSlice = createSlice({
                 state.comments.status = 'error';
             })
             .addCase(fetchLastComments.pending, (state) => {
-                state.comments.items = [];
+                // state.comments.items = [];
                 state.comments.status = 'loading';
             })
             .addCase(fetchLastComments.fulfilled, (state, action) => {
