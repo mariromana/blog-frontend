@@ -1,12 +1,12 @@
-import React, { useEffect, useState, useMemo, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchPostsByUser } from '../../redux/slices/post';
-import { fetchAuthMe, fetchAuthDelete } from '../../redux/slices/auth';
+import { fetchAuthMe } from '../../redux/slices/auth';
 import { Post } from '../../components';
 import { useNavigate } from 'react-router-dom';
 import axios from '../../axios';
-import { selectIsAuth, logout, setIsAuth } from '../../redux/slices/auth';
+import { selectIsAuth, logout } from '../../redux/slices/auth';
 
 import {
     Avatar,
@@ -17,7 +17,6 @@ import {
     Grid,
     createTheme,
     ThemeProvider,
-    Popover,
     Box,
     Modal,
 } from '@mui/material';
@@ -47,13 +46,16 @@ const theme = createTheme({
 
 export const Profile = () => {
     const { data } = useSelector((state) => state.auth);
-    const [isLoading, setLoading] = useState(true);
+    // const [isLoading, setLoading] = useState(true);
     const { posts } = useSelector((state) => state.posts);
-    const isPostsLoading = posts.status === 'loading';
+    const postsStatus = useSelector((state) => state.posts.status);
+    // const isPostsLoading = posts.status === 'loading';
+    const isPostsLoading = postsStatus === 'loading';
     const [edit, setEdit] = useState(false);
     const dispatch = useDispatch();
     const isAuth = useSelector(selectIsAuth);
-    const userId = data && data._id;
+    // const userId = data && data._id;
+    const userId = data?._id;
     const isMounted = useRef(true);
     const navigate = useNavigate();
     const [modalOpen, setModalOpen] = useState(false);

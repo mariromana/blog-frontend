@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRef, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchUpdateAuth, fetchAuthMe } from '../../redux/slices/auth';
+import { fetchUpdateAuth } from '../../redux/slices/auth';
 import axios from '../../axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';

@@ -201,6 +201,7 @@ export const Registration = ({ isEditing }) => {
                         type="file"
                         onChange={handleChangeFile}
                         hidden
+                        data-testid="file-input"
                     />
                     <TextField
                         error={Boolean(errors.fullName?.message)}

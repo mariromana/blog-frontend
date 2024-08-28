@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Post } from '../components/Post';
 import { useSelector } from 'react-redux';
-import { fetchComments, fetchDeleteComment } from '../redux/slices/comment';
+import { fetchDeleteComment } from '../redux/slices/comment';
 import { Index } from '../components/AddComment';
 import Markdown from 'react-markdown';
 import { CommentsBlock } from '../components/CommentsBlock';
@@ -16,7 +16,7 @@ export const FullPost = () => {
     const [comment, setComment] = useState([]);
     const [isLoading, setLoading] = useState(true);
     const { comments } = useSelector((state) => state.comments);
-    const { post } = useSelector((state) => state.posts);
+
     const userData = useSelector((state) => state.auth.data);
     const { id } = useParams();
     const dispatch = useDispatch();

@@ -5,9 +5,7 @@ import defaultImg from '../img/avatar-15.svg';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectIsAuth } from '../redux/slices/auth';
-import { useDispatch } from 'react-redux';
-import { fetchDeleteComment } from '../redux/slices/comment';
-import { fetchComments } from '../redux/slices/comment';
+
 import DeleteIcon from '@mui/icons-material/Clear';
 import {
     ListItem,
@@ -30,7 +28,7 @@ export const CommentsBlock = ({
 }) => {
     const isAuth = useSelector(selectIsAuth);
     const userData = useSelector((state) => state.auth.data);
-    const dispatch = useDispatch();
+
     const defaultComment = [
         {
             user: {
